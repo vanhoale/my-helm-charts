@@ -2,16 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-image:
-  repository: ""
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -24,53 +14,58 @@ serviceAccount:
 rbac:
   create: false
 
-sparkApplication:
-  type: Scala
-  mode: cluster
-  mainClass: ""
-  arguments: []
-  mainApplicationFile: ""
-  version: "3.1.1"
-  conf:
-    eventLogEnabled: true
-    eventLogDir: ""
-    # true if dynamicAllocation is set to true that will help fault resilience
-    dynamicAllocationShuffleTrackingEnabled: true
-  pvcs: {}
-  restartPolicy:
-    type: Never
-  volumes: []
-  driver:
-    javaOptions: ""
-    cores: 1
-    coreLimit: ""
-    memory: ""
-    memoryOverhead: ""
-    volumeMounts: []
-  executor:
-    javaOptions: ""
-    cores: 1
-    coreLimit: ""
-    memory: ""
-    memoryOverhead: ""
-    volumeMounts: []
-  envs: []
-  envSecretKeyRefs: {}
-  monitoring:
-    exposeDriverMetrics: true
-    exposeExecutorMetrics: true
-    prometheus:
-      jmxExporterJar: ""
-      port: 8090
-  dynamicAllocation:
-    enabled: true
-    initialExecutors: 1
-    minExecutors: 1
-    maxExecutors: 10
-
-tolerations: []
-
-affinity: {}
+#app1:
+#  image:
+#    repository: ""
+#    pullPolicy: IfNotPresent
+#    tag: ""
+#  fullnameOverride: ""
+#  type: Scala
+#  mode: cluster
+#  mainClass: ""
+#  arguments: []
+#  mainApplicationFile: ""
+#  version: "3.1.1"
+#  conf:
+#    eventLogEnabled: true
+#    eventLogDir: ""
+#    # true if dynamicAllocation is set to true that will help fault resilience
+#    dynamicAllocationShuffleTrackingEnabled: true
+#  pvcs: {}
+#  restartPolicy:
+#    type: Never
+#  volumes: []
+#  driver:
+#    javaOptions: ""
+#    cores: 1
+#    coreLimit: ""
+#    memory: ""
+#    memoryOverhead: ""
+#    volumeMounts: []
+#  executor:
+#    javaOptions: ""
+#    cores: 1
+#    coreLimit: ""
+#    memory: ""
+#    memoryOverhead: ""
+#    volumeMounts: []
+#  envs: []
+#  envSecretKeyRefs: {}
+#  monitoring:
+#    exposeDriverMetrics: true
+#    exposeExecutorMetrics: true
+#    prometheus:
+#      jmxExporterJar: ""
+#      port: 8090
+#  dynamicAllocation:
+#    enabled: true
+#    initialExecutors: 1
+#    minExecutors: 1
+#    maxExecutors: 10
+#  tolerations: []
+#  affinity: {}
+### Each app should have a value structure above
+apps: {}
 
 # testing purpose
 service:
