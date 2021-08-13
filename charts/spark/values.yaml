@@ -14,56 +14,52 @@ serviceAccount:
 rbac:
   create: false
 
-#app1:
-#  image:
-#    repository: ""
-#    pullPolicy: IfNotPresent
-#    tag: ""
-#  fullnameOverride: ""
-#  type: Scala
-#  mode: cluster
-#  mainClass: ""
-#  arguments: []
-#  mainApplicationFile: ""
-#  version: "3.1.1"
-#  conf:
-#    eventLogEnabled: true
-#    eventLogDir: ""
-#    # true if dynamicAllocation is set to true that will help fault resilience
-#    dynamicAllocationShuffleTrackingEnabled: true
-#  pvcs: {}
-#  restartPolicy:
-#    type: Never
-#  volumes: []
-#  driver:
-#    javaOptions: ""
-#    cores: 1
-#    coreLimit: ""
-#    memory: ""
-#    memoryOverhead: ""
-#    volumeMounts: []
-#  executor:
-#    javaOptions: ""
-#    cores: 1
-#    coreLimit: ""
-#    memory: ""
-#    memoryOverhead: ""
-#    volumeMounts: []
-#  envs: []
-#  envSecretKeyRefs: {}
-#  monitoring:
-#    exposeDriverMetrics: true
-#    exposeExecutorMetrics: true
-#    prometheus:
-#      jmxExporterJar: ""
-#      port: 8090
-#  dynamicAllocation:
-#    enabled: true
-#    initialExecutors: 1
-#    minExecutors: 1
-#    maxExecutors: 10
-#  tolerations: []
-#  affinity: {}
+#  app1:
+#    image:
+#      pullPolicy: IfNotPresent
+#      repository: ""
+#      tag: ""
+#    fullnameOverride: ""
+#    type: Scala
+#    mode: cluster
+#    mainClass: ""
+#    arguments: []
+#    mainApplicationFile: ""
+#    version: ""
+#    conf: ""
+#    pvcs: {}
+#    restartPolicy:
+#      type: Never
+#    volumes: []
+#    driver:
+#      javaOptions: ""
+#      cores: 1
+#      coreLimit: ""
+#      memory: ""
+#      memoryOverhead: ""
+#      volumeMounts: []
+#    executor:
+#      javaOptions: ""
+#      cores: 1
+#      coreLimit: ""
+#      memory: ""
+#      memoryOverhead: ""
+#      volumeMounts: []
+#    envs: []
+#    envSecretKeyRefs: {}
+#    monitoring:
+#      exposeDriverMetrics: true
+#      exposeExecutorMetrics: true
+#      prometheus:
+#        jmxExporterJar: ""
+#        port: 8090
+#    dynamicAllocation:
+#      enabled: true
+#      initialExecutors: 1
+#      minExecutors: 1
+#      maxExecutors: 10
+#    tolerations: []
+#    affinity: {}
 ### Each app should have a value structure above
 apps: {}
 
