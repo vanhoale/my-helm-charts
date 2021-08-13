@@ -12,58 +12,38 @@ serviceAccount:
   name: "spark"
 
 rbac:
-  create: false
+  create: true
 
-#  app1:
-#    image:
-#      pullPolicy: IfNotPresent
-#      repository: ""
-#      tag: ""
-#    fullnameOverride: ""
-#    type: Scala
-#    mode: cluster
-#    mainClass: ""
-#    arguments: []
-#    mainApplicationFile: ""
-#    version: ""
-#    conf: ""
-#    pvcs: {}
-#    restartPolicy:
-#      type: Never
-#    volumes: []
-#    driver:
-#      javaOptions: ""
-#      cores: 1
-#      coreLimit: ""
-#      memory: ""
-#      memoryOverhead: ""
-#      volumeMounts: []
-#    executor:
-#      javaOptions: ""
-#      cores: 1
-#      coreLimit: ""
-#      memory: ""
-#      memoryOverhead: ""
-#      volumeMounts: []
-#    envs: []
-#    envSecretKeyRefs: {}
-#    monitoring:
-#      exposeDriverMetrics: true
-#      exposeExecutorMetrics: true
-#      prometheus:
-#        jmxExporterJar: ""
-#        port: 8090
-#    dynamicAllocation:
-#      enabled: true
-#      initialExecutors: 1
-#      minExecutors: 1
-#      maxExecutors: 10
-#    tolerations: []
-#    affinity: {}
-### Each app should have a value structure above
+image:
+  pullPolicy: IfNotPresent
+  repository: "harbor-us-west-2.c2fo.com/c2fo/spark-de"
+  tag: "3.1.1"
+sparkApplication:
+  type: Scala
+  mode: cluster
+  mainApplicationFile: "s3a://c2fo-atlas-devload/jars/atlas.jar"
+  version: "3.1.1"
+  volumes:
+    - name: config-vol
+      configMap:
+        name: spark-log4j-conf-map
+  volumeMounts:
+    - name: config-vol
+      mountPath: /opt/spark/log4j
+  monitoring:
+    exposeDriverMetrics: true
+    exposeExecutorMetrics: true
+    prometheus:
+      jmxExporterJar: "/prometheus/jmx_prometheus_javaagent-0.16.1.jar"
+      port: 8090
+  restartPolicy:
+    type: Never
+  conf: {}
+  commonEnvs: []
+  commonEnvSecretKeyRefs: {}
 apps: {}
 
-# testing purpose
+# for testing purpose
 service:
   type: ClusterIP
   port: 80

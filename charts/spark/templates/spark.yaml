@@ -3,32 +3,34 @@
 {{- $executorMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).executor_instances }}
 {{- $driverTags := toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).driver }}
 {{- $executorTags := toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).executor }}
-{{- $serviceAccount := .Values.serviceAccount }}
 {{ range $k, $app := .Values.apps }}
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
   name: {{ $app.fullnameOverride }}
+  labels:
+    app.kubernetes.io/name: {{ include "spark.name" $root }}
+    app.kubernetes.io/instance: {{ $root.Release.Name }}
 spec:
-  type: {{ $app.type }}
-  mode: {{ $app.mode }}
-  image: "{{ $app.image.repository }}:{{ $app.image.tag }}"
-  imagePullPolicy: {{ $app.image.pullPolicy }}
+  type: {{ $root.Values.sparkApplication.type }}
+  mode: {{ $root.Values.sparkApplication.mode }}
+  image: "{{ $root.Values.image.repository }}:{{ $root.Values.image.tag }}"
+  imagePullPolicy: {{ $root.Values.image.pullPolicy }}
   mainClass: {{ $app.mainClass }}
   {{- with $app.arguments }}
   arguments:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-  mainApplicationFile: {{ $app.mainApplicationFile }}
-  sparkVersion: {{ $app.version }}
+  mainApplicationFile: {{ $root.Values.sparkApplication.mainApplicationFile }}
+  sparkVersion: {{ $root.Values.sparkApplication.version }}
   sparkConf:
-    {{- toYaml $app.conf | nindent 4 }}
-    {{- with $app.pvcs }}
+    {{- toYaml $root.Values.sparkApplication.conf | nindent 4 }}
+    {{- with $app.conf }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
   restartPolicy:
-    type: {{ $app.restartPolicy.type }}
-  {{- with $app.volumes }}
+    type: {{ $root.Values.sparkApplication.restartPolicy.type }}
+  {{- with $root.Values.sparkApplication.volumes }}
   volumes:
     {{- toYaml . | nindent 4 }}
   {{- end }}
@@ -41,12 +43,18 @@ spec:
       ad.datadoghq.com/spark-kubernetes-driver.init_configs: |
         [{}]
       ad.datadoghq.com/spark-kubernetes-driver.instances: '{{ $driverMonitoring }}'
-    {{- with $app.envs }}
     env:
+    {{- with $root.Values.sparkApplication.commonEnvs }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with $app.envs }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    envSecretKeyRefs:
+    {{- with $root.Values.sparkApplication.commonEnvSecretKeyRefs }}
       {{- toYaml . | nindent 6 }}
     {{- end }}
     {{- with $app.envSecretKeyRefs }}
-    envSecretKeyRefs:
       {{- toYaml . | nindent 6 }}
     {{- end }}
     cores: {{ $app.driver.cores }}
@@ -54,9 +62,9 @@ spec:
     memory: {{ $app.driver.memory }}
     memoryOverhead: {{ $app.driver.memoryOverhead }}
     labels:
-      version: {{ $app.version }}
-    serviceAccount: {{ $serviceAccount.name }}
-    {{- with $app.driver.volumeMounts }}
+      version: {{ $root.Values.sparkApplication.version }}
+    serviceAccount: {{ include "spark.serviceAccountName" $root }}
+    {{- with $root.Values.sparkApplication.volumeMounts }}
     volumeMounts:
       {{- toYaml . | nindent 6 }}
     {{- end }}
@@ -90,9 +98,9 @@ spec:
     memory: {{ $app.executor.memory }}
     memoryOverhead: {{ $app.executor.memoryOverhead }}
     labels:
-      version: {{ $app.version }}
-    serviceAccount: {{ $serviceAccount.name }}
-    {{- with $app.executor.volumeMounts }}
+      version: {{ $root.Values.sparkApplication.version }}
+    serviceAccount: {{ include "spark.serviceAccountName" $root }}
+    {{- with $root.Values.sparkApplication.volumeMounts }}
     volumeMounts:
       {{- toYaml . | nindent 6 }}
     {{- end }}
@@ -105,11 +113,11 @@ spec:
       {{- toYaml . | nindent 6 }}
     {{- end }}
   monitoring:
-    exposeDriverMetrics: {{ $app.monitoring.exposeDriverMetrics }}
-    exposeExecutorMetrics: {{ $app.monitoring.exposeExecutorMetrics }}
+    exposeDriverMetrics: {{ $root.Values.sparkApplication.monitoring.exposeDriverMetrics }}
+    exposeExecutorMetrics: {{ $root.Values.sparkApplication.monitoring.exposeExecutorMetrics }}
     prometheus:
-      jmxExporterJar: {{ $app.monitoring.prometheus.jmxExporterJar }}
-      port: {{ $app.monitoring.prometheus.port }}
+      jmxExporterJar: {{ $root.Values.sparkApplication.monitoring.prometheus.jmxExporterJar }}
+      port: {{ $root.Values.sparkApplication.monitoring.prometheus.port }}
   dynamicAllocation:
     enabled: {{ $app.dynamicAllocation.enabled }}
     initialExecutors: {{ $app.dynamicAllocation.initialExecutors }}
