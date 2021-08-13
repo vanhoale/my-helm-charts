@@ -36,7 +36,7 @@ sparkApplication:
     eventLogDir: ""
     # true if dynamicAllocation is set to true that will help fault resilience
     dynamicAllocationShuffleTrackingEnabled: true
-  pvcs: []
+  pvcs: {}
   restartPolicy:
     type: Never
   volumes: []

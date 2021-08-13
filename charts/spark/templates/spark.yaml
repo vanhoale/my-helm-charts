@@ -31,7 +31,7 @@ spec:
   driver:
     javaOptions: {{ .Values.sparkApplication.driver.javaOptions }}
     annotations:
-      ad.datadoghq.com/spark-kubernetes-driver.tags: '{"spark_app_name": "firehose-ingestion-job","pod_type": "driver"}'
+      ad.datadoghq.com/spark-kubernetes-driver.tags: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).driver }}'
       ad.datadoghq.com/spark-kubernetes-driver.check_names: |
         ["openmetrics"]
       ad.datadoghq.com/spark-kubernetes-driver.init_configs: |
@@ -67,7 +67,7 @@ spec:
   executor:
     javaOptions: {{ .Values.sparkApplication.executor.javaOptions }}
     annotations:
-      ad.datadoghq.com/spark-kubernetes-executor.tags: '{"spark_app_name": "firehose-ingestion-job","pod_type": "executor"}'
+      ad.datadoghq.com/spark-kubernetes-executor.tags: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).executor }}'
       ad.datadoghq.com/spark-kubernetes-executor.check_names: |
         ["openmetrics"]
       ad.datadoghq.com/spark-kubernetes-executor.init_configs: |
