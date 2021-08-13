@@ -71,3 +71,8 @@ sparkApplication:
 tolerations: []
 
 affinity: {}
+
+# testing purpose
+service:
+  type: ClusterIP
+  port: 80

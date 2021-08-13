@@ -1,0 +1,4 @@
+*.tgz
+.idea/*
+.DS_Store
+.deploy/*
