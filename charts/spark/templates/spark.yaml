@@ -104,8 +104,8 @@ spec:
     exposeDriverMetrics: {{ .Values.sparkApplication.monitoring.exposeDriverMetrics }}
     exposeExecutorMetrics: {{ .Values.sparkApplication.monitoring.exposeExecutorMetrics }}
     prometheus:
-      jmxExporterJar: {{ .Values.sparkApplication.monitoring.jmxExporterJar }}
-      port: {{ .Values.sparkApplication.monitoring.port }}
+      jmxExporterJar: {{ .Values.sparkApplication.monitoring.prometheus.jmxExporterJar }}
+      port: {{ .Values.sparkApplication.monitoring.prometheus.port }}
   dynamicAllocation:
     enabled: {{ .Values.sparkApplication.dynamicAllocation.enabled }}
     initialExecutors: {{ .Values.sparkApplication.dynamicAllocation.initialExecutors }}
