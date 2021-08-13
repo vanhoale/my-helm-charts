@@ -3,6 +3,16 @@ entries:
   spark:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-08-13T07:22:49.617141-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 600c656fec50bb6b04b0f3763120242331c769564b967913341975aa8e6e2615
+    name: spark
+    type: application
+    urls:
+    - https://github.com/vanhoale/my-helm-charts/releases/download/spark-0.1.5/spark-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-08-13T07:06:32.040124-05:00"
     description: A Helm chart for Kubernetes
     digest: 4c8ff5e219351954a86be48a65038ab57cd800c47fe3e2d694b70992f757689c
@@ -31,4 +41,4 @@ entries:
     urls:
     - https://github.com/vanhoale/my-helm-charts/releases/download/spark-0.1.0/spark-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-13T07:06:32.040153-05:00"
+generated: "2021-08-13T07:22:49.617155-05:00"
