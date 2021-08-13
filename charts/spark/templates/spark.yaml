@@ -52,7 +52,7 @@ spec:
     labels:
       version: {{ .Values.sparkApplication.version }}
     serviceAccount: {{ include "spark.serviceAccountName" . }}
-    {{- with .Values.sparkApplication.driver.envs }}
+    {{- with .Values.sparkApplication.driver.volumeMounts }}
     volumeMounts:
       {{- toYaml . | nindent 6 }}
     {{- end }}
@@ -83,12 +83,12 @@ spec:
     {{- end }}
     cores: {{ .Values.sparkApplication.executor.cores }}
     coreLimit: {{ .Values.sparkApplication.executor.coreLimit }}
-    memory: {{ .Values.sparkApplication.driver.memory }}
-    memoryOverhead: {{ .Values.sparkApplication.driver.memoryOverhead }}
+    memory: {{ .Values.sparkApplication.executor.memory }}
+    memoryOverhead: {{ .Values.sparkApplication.executor.memoryOverhead }}
     labels:
       version: {{ .Values.sparkApplication.version }}
     serviceAccount: {{ include "spark.serviceAccountName" . }}
-    {{- with .Values.sparkApplication.driver.envs }}
+    {{- with .Values.sparkApplication.executor.volumeMounts }}
     volumeMounts:
       {{- toYaml . | nindent 6 }}
     {{- end }}
