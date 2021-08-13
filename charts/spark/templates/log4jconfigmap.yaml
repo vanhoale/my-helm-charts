@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spark-log4j-conf-map
+  namespace: {{ .Release.Namespace }}
+data:
+  log4j.properties: |
+    log4j.rootCategory=INFO, console
+    log4j.appender.console=org.apache.log4j.ConsoleAppender
+    log4j.appender.console.layout=org.apache.log4j.PatternLayout
+    log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %p %m (%c) [%t]%n
+    log4j.logger.org.apache.hadoop=ERROR
+    log4j.logger.org.apache.spark=ERROR
+    log4j.logger.io.github.spark_redshift_community=ERROR
+    log4j.logger.org.apache.parquet=ERROR

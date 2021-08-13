@@ -1,0 +1,113 @@
+apiVersion: "sparkoperator.k8s.io/v1beta2"
+kind: SparkApplication
+metadata:
+  name: {{ include "spark.fullname" . }}
+  labels:
+    {{- include "spark.labels" . | nindent 4 }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  type: {{ .Values.sparkApplication.type }}
+  mode: {{ .Values.sparkApplication.mode }}
+  image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+  imagePullPolicy: {{ .Values.image.pullPolicy }}
+  mainClass: {{ .Values.sparkApplication.mainClass }}
+  {{- with .Values.sparkApplication.arguments }}
+  arguments:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  mainApplicationFile: {{ .Values.sparkApplication.mainApplicationFile }}
+  sparkVersion: {{ .Values.sparkApplication.version }}
+  sparkConf:
+    {{- toYaml .Values.sparkApplication.conf | nindent 4 }}
+    {{- with .Values.sparkApplication.pvcs }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+  restartPolicy:
+    type: {{ .Values.sparkApplication.restartPolicy.type }}
+  {{- with .Values.sparkApplication.volumes }}
+  volumes:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  driver:
+    javaOptions: {{ .Values.sparkApplication.driver.javaOptions }}
+    annotations:
+      ad.datadoghq.com/spark-kubernetes-driver.tags: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).driver }}'
+      ad.datadoghq.com/spark-kubernetes-driver.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/spark-kubernetes-driver.init_configs: |
+        [{}]
+      ad.datadoghq.com/spark-kubernetes-driver.instances: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).driver_instances }}'
+    {{- with .Values.sparkApplication.envs }}
+    env:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.sparkApplication.envSecretKeyRefs }}
+    envSecretKeyRefs:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    cores: {{ .Values.sparkApplication.driver.cores }}
+    coreLimit: {{ .Values.sparkApplication.driver.coreLimit }}
+    memory: {{ .Values.sparkApplication.driver.memory }}
+    memoryOverhead: {{ .Values.sparkApplication.driver.memoryOverhead }}
+    labels:
+      version: {{ .Values.sparkApplication.version }}
+    serviceAccount: {{ include "spark.serviceAccountName" . }}
+    {{- with .Values.sparkApplication.driver.envs }}
+    volumeMounts:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+    tolerations:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+    affinity:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  executor:
+    javaOptions: {{ .Values.sparkApplication.executor.javaOptions }}
+    annotations:
+      ad.datadoghq.com/spark-kubernetes-executor.tags: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).executor }}'
+      ad.datadoghq.com/spark-kubernetes-executor.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/spark-kubernetes-executor.init_configs: |
+        [{}]
+      ad.datadoghq.com/spark-kubernetes-executor.instances: '{{ toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).executor_instances }}'
+    {{- with .Values.sparkApplication.envs }}
+    env:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.sparkApplication.envSecretKeyRefs }}
+    envSecretKeyRefs:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    cores: {{ .Values.sparkApplication.executor.cores }}
+    coreLimit: {{ .Values.sparkApplication.executor.coreLimit }}
+    memory: {{ .Values.sparkApplication.driver.memory }}
+    memoryOverhead: {{ .Values.sparkApplication.driver.memoryOverhead }}
+    labels:
+      version: {{ .Values.sparkApplication.version }}
+    serviceAccount: {{ include "spark.serviceAccountName" . }}
+    {{- with .Values.sparkApplication.driver.envs }}
+    volumeMounts:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+    tolerations:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+    affinity:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  monitoring:
+    exposeDriverMetrics: {{ .Values.sparkApplication.monitoring.exposeDriverMetrics }}
+    exposeExecutorMetrics: {{ .Values.sparkApplication.monitoring.exposeExecutorMetrics }}
+    prometheus:
+      jmxExporterJar: {{ .Values.sparkApplication.monitoring.jmxExporterJar }}
+      port: {{ .Values.sparkApplication.monitoring.port }}
+  dynamicAllocation:
+    enabled: {{ .Values.sparkApplication.dynamicAllocation.enabled }}
+    initialExecutors: {{ .Values.sparkApplication.dynamicAllocation.initialExecutors }}
+    minExecutors: {{ .Values.sparkApplication.dynamicAllocation.minExecutors }}
+    maxExecutors: {{ .Values.sparkApplication.dynamicAllocation.maxExecutors }}

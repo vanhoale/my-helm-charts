@@ -1,0 +1,6 @@
+driver:
+  spark_app_name: {{ include "spark.fullname" . }}
+  pod_type: driver
+executor:
+  spark_app_name: {{ include "spark.fullname" . }}
+  pod_type: executor
