@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d7f9bc29-46bf-464c-9313-8ade45481acc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Chart.yaml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Chart.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Chart.yaml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/spark.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/sbt.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="947" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="spark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/atlas" value="PREVIEW" />
+        <entry key="$USER_HOME$/atlas-devload/atlas" value="PREVIEW" />
+        <entry key="$USER_HOME$/atlas_upgrade/atlas" value="PREVIEW" />
+        <entry key="$USER_HOME$/delta_fix/delta" value="PREVIEW" />
+        <entry key="$USER_HOME$/delta_investigate/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../alapi/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../atlas-api-upgrade/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ccrep_fix/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../cdc-p/postgres-cdc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../cmak/CMAK" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../delgit/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../fixTests/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../fork/spark-redshift" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-1936/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2067/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2090/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2204/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2234/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2354/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2395/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2444/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2490-fix/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2490/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2656/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2701/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2758/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2760/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2780/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2841/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2843-1/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2843/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-2912/postgres-cdc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-3223/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-3731/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-4335/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-4557/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-4571/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-4656/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/ATLAS-4779/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/INPROD/ATLAS-2444/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/INPROD/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/creditsafe/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/delta_dev/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/delta_transform/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/fix-shit/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/hash/atlas-api" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/if/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/if/ttt/delta" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/pubsub_spark3/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ij/window/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../play-samples/play-java-chatroom-example" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../postgres-cdc-deploy-new/postgres-cdc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../postgres-cdc-deploy/postgres-cdc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../ppp/postgres-cdc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../pycharm/ATLAS-2109/atlas" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../river/river" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../spark-redshift" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../spark-structured-streaming/spark-structured-streaming-examples" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../../test-delta/delta" value="PREVIEW" />
+        <entry key="$USER_HOME$/eis_upgrade/eis" value="PREVIEW" />
+        <entry key="$USER_HOME$/eis_upgrade/eis1/eis" value="PREVIEW" />
+        <entry key="$USER_HOME$/eis_upgrade/fix/eis" value="PREVIEW" />
+        <entry key="$USER_HOME$/fix_delta/delta" value="PREVIEW" />
+        <entry key="$USER_HOME$/spark-redshift-comm/spark-redshift" value="PREVIEW" />
+        <entry key="$USER_HOME$/temp/atlas" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7f9bc29-46bf-464c-9313-8ade45481acc" name="Default Changelist" comment="" />
+      <created>1628819976661</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628819976661</updated>
+      <workItem from="1628819978340" duration="354000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="354000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="947" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Chart.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
