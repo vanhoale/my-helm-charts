@@ -37,6 +37,8 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ---
+# A work around for RoleBinding for service account from operator namespace to have Role on apps namespace
+# May need a cluster role for the account?
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:

@@ -21,8 +21,10 @@ image:
 sparkApplication:
   type: Scala
   mode: cluster
-  mainApplicationFile: "s3a://c2fo-atlas-devload/jars/atlas.jar"
+  mainApplicationFile: ""
   version: "3.1.1"
+
+  # Log4j is passed here, it's not a completed solution yet. https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/753
   volumes:
     - name: config-vol
       configMap:
@@ -30,17 +32,47 @@ sparkApplication:
   volumeMounts:
     - name: config-vol
       mountPath: /opt/spark/log4j
+
+  # Prometheus metrics that will be pulled by datadog agent
   monitoring:
     exposeDriverMetrics: true
     exposeExecutorMetrics: true
     prometheus:
-      jmxExporterJar: "/prometheus/jmx_prometheus_javaagent-0.16.1.jar"
+      jmxExporterJar: ""
       port: 8090
   restartPolicy:
     type: Never
   conf: {}
+  # Common environment variables for all the apps
   commonEnvs: []
+  # Common environment variables secret key refs for all the apps
   commonEnvSecretKeyRefs: {}
+
+## The app values ex:
+#  app1:
+#    fullnameOverride: ""
+#    mainClass: ""
+#    arguments: []
+#    conf: {}
+#    driver:
+#      javaOptions: ""
+#      cores: 1
+#      coreLimit: ""
+#      memory: "4g"
+#      memoryOverhead: "1g"
+#    executor:
+#      javaOptions: ""
+#      cores: 1
+#      coreLimit: "1200m"
+#      memory: "8g"
+#      memoryOverhead: "2g"
+#    envs: []
+#    envSecretKeyRefs: {}
+#    dynamicAllocation:
+#      enabled: true
+#      initialExecutors: 1
+#      minExecutors: 1
+#      maxExecutors: 10
 apps: {}
 
 # for testing purpose
