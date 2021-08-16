@@ -80,7 +80,7 @@ spec:
   executor:
     javaOptions: {{ $app.executor.javaOptions }}
     annotations:
-      ad.datadoghq.com/spark-kubernetes-executor.tags: '{"spark_app_name": "{{ $app.fullnameOverride }}","pod_type": "executor", "executor_id": "%%env_SPARK_EXECUTOR_ID%%"}'
+      ad.datadoghq.com/spark-kubernetes-executor.tags: '{"spark_app_name": "{{ $app.fullnameOverride }}","pod_type": "executor", "executor_id": "%%env_DD_KUBERNETES_POD_LABELS_AS_TAGS%%"}'
       ad.datadoghq.com/spark-kubernetes-executor.check_names: |
         ["openmetrics"]
       ad.datadoghq.com/spark-kubernetes-executor.init_configs: |
