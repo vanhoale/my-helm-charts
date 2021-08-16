@@ -1,9 +1,8 @@
 {{- $root := . -}}
 {{- $driverMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).driver_instances }}
 {{- $executorMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).executor_instances }}
-{{- $driverTags := toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).driver }}
-{{- $executorTags := toJson (fromYaml (tpl (.Files.Get "monitoring/tags.yaml") .)).executor }}
 {{ range $k, $app := .Values.apps }}
+---
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
@@ -37,7 +36,7 @@ spec:
   driver:
     javaOptions: {{ $app.driver.javaOptions }}
     annotations:
-      ad.datadoghq.com/spark-kubernetes-driver.tags: '{{ $driverTags }}'
+      ad.datadoghq.com/spark-kubernetes-driver.tags: '{"spark_app_name": "{{ $app.fullnameOverride }}","pod_type": "driver"}'
       ad.datadoghq.com/spark-kubernetes-driver.check_names: |
         ["openmetrics"]
       ad.datadoghq.com/spark-kubernetes-driver.init_configs: |
@@ -79,7 +78,7 @@ spec:
   executor:
     javaOptions: {{ $app.executor.javaOptions }}
     annotations:
-      ad.datadoghq.com/spark-kubernetes-executor.tags: '{{ $executorTags }}'
+      ad.datadoghq.com/spark-kubernetes-executor.tags: '{"spark_app_name": "{{ $app.fullnameOverride }}","pod_type": "executor"}'
       ad.datadoghq.com/spark-kubernetes-executor.check_names: |
         ["openmetrics"]
       ad.datadoghq.com/spark-kubernetes-executor.init_configs: |
