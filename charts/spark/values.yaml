@@ -44,7 +44,7 @@ sparkApplication:
     type: Never
   conf: {}
   # Common environment variables for all the apps
-  commonEnvs: []
+  commonEnvs: {}
   # Common environment variables secret key refs for all the apps
   commonEnvSecretKeyRefs: {}
 

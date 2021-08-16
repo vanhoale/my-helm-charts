@@ -1,7 +1,7 @@
 {{- $root := . -}}
-{{- $driverMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).driver_instances }}
-{{- $executorMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).executor_instances }}
-{{ range $k, $app := .Values.apps }}
+  {{- $driverMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).driver_instances }}
+  {{- $executorMonitoring := toJson (fromYaml (tpl (.Files.Get "monitoring/metrics.yaml") .)).executor_instances }}
+  {{ range $k, $app := .Values.apps }}
 ---
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
@@ -24,9 +24,9 @@ spec:
   sparkVersion: {{ $root.Values.sparkApplication.version }}
   sparkConf:
     {{- toYaml $root.Values.sparkApplication.conf | nindent 4 }}
-    {{- with $app.conf }}
+      {{- with $app.conf }}
       {{- toYaml . | nindent 4 }}
-    {{- end }}
+      {{- end }}
   restartPolicy:
     type: {{ $root.Values.sparkApplication.restartPolicy.type }}
   {{- with $root.Values.sparkApplication.volumes }}
@@ -43,18 +43,20 @@ spec:
         [{}]
       ad.datadoghq.com/spark-kubernetes-driver.instances: '{{ $driverMonitoring }}'
     env:
-    {{- with $root.Values.sparkApplication.commonEnvs }}
-      {{- toYaml . | nindent 6 }}
+    {{- range $key, $value := $root.Values.sparkApplication.commonEnvs }}
+    - name: {{ $key }}
+      value: {{ $value | quote }}
     {{- end }}
-    {{- with $app.envs }}
-      {{- toYaml . | nindent 6 }}
+    {{- range $key, $value := $app.envs }}
+    - name: {{ $key }}
+      value: {{ $value | quote }}
     {{- end }}
     envSecretKeyRefs:
     {{- with $root.Values.sparkApplication.commonEnvSecretKeyRefs }}
-      {{- toYaml . | nindent 6 }}
+    {{- toYaml . | nindent 6 }}
     {{- end }}
     {{- with $app.envSecretKeyRefs }}
-      {{- toYaml . | nindent 6 }}
+    {{- toYaml . | nindent 6 }}
     {{- end }}
     cores: {{ $app.driver.cores }}
     coreLimit: {{ $app.driver.coreLimit }}
@@ -85,11 +87,13 @@ spec:
         [{}]
       ad.datadoghq.com/spark-kubernetes-executor.instances: '{{ $executorMonitoring }}'
     env:
-    {{- with $root.Values.sparkApplication.commonEnvs }}
-    {{- toYaml . | nindent 6 }}
+    {{- range $key, $value := $root.Values.sparkApplication.commonEnvs }}
+    - name: {{ $key }}
+      value: {{ $value | quote }}
     {{- end }}
-    {{- with $app.envs }}
-    {{- toYaml . | nindent 6 }}
+    {{- range $key, $value := $app.envs }}
+    - name: {{ $key }}
+      value: {{ $value | quote }}
     {{- end }}
     envSecretKeyRefs:
     {{- with $root.Values.sparkApplication.commonEnvSecretKeyRefs }}
@@ -128,4 +132,4 @@ spec:
     initialExecutors: {{ $app.dynamicAllocation.initialExecutors }}
     minExecutors: {{ $app.dynamicAllocation.minExecutors }}
     maxExecutors: {{ $app.dynamicAllocation.maxExecutors }}
-{{ end }}
+  {{ end }}
