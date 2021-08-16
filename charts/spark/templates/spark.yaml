@@ -84,13 +84,19 @@ spec:
       ad.datadoghq.com/spark-kubernetes-executor.init_configs: |
         [{}]
       ad.datadoghq.com/spark-kubernetes-executor.instances: '{{ $executorMonitoring }}'
-    {{- with $app.envs }}
     env:
-      {{- toYaml . | nindent 6 }}
+    {{- with $root.Values.sparkApplication.commonEnvs }}
+    {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with $app.envs }}
+    {{- toYaml . | nindent 6 }}
+    {{- end }}
+    envSecretKeyRefs:
+    {{- with $root.Values.sparkApplication.commonEnvSecretKeyRefs }}
+    {{- toYaml . | nindent 6 }}
     {{- end }}
     {{- with $app.envSecretKeyRefs }}
-    envSecretKeyRefs:
-      {{- toYaml . | nindent 6 }}
+    {{- toYaml . | nindent 6 }}
     {{- end }}
     cores: {{ $app.executor.cores }}
     coreLimit: {{ $app.executor.coreLimit }}
